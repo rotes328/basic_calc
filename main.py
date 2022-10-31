@@ -8,7 +8,7 @@ def check_is_int(arg):
         fcheck = float(register)
         if fcheck.is_integer():
             register = str(int(fcheck))
-    if arg == "accumulator":
+    elif arg == "accumulator":
         fcheck = float(accumulator)
         if fcheck.is_integer():
             accumulator = str(int(fcheck))
@@ -397,6 +397,7 @@ def press_equals():
     return
 
 
+# Set initial values
 accumulator = "0"
 first_time = True
 accumulator_displayed = False
@@ -411,13 +412,8 @@ win = Tk()
 win.title("Calculator")
 win.grid_rowconfigure(6, weight=1)
 
-
-def do_nothing():
-    return
-
-
 # Create input tracker
-input_widget = Label(win, text="", fg="black", relief=SUNKEN, bg="white", font="Helvetica 14")
+input_widget = Label(win, text="", fg="black", relief=SUNKEN, bg="white")
 
 # Create buttons
 clear_button = Button(win, text="AC", command=lambda: press_clear())
