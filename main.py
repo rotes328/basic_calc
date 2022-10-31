@@ -39,7 +39,9 @@ def press_plus():
         current_func = "plus"
         last_button_operator = True
         return
-    if first_time is True:
+    if first_time:
+        if register == "":
+            return
         accumulator = register
         register = ""
         update_output(accumulator)
@@ -72,7 +74,9 @@ def press_minus():
         current_func = "minus"
         last_button_operator = True
         return
-    if first_time is True:
+    if first_time:
+        if register == "":
+            return
         accumulator = register
         register = ""
         update_output(accumulator)
@@ -105,7 +109,9 @@ def press_times():
         current_func = "times"
         last_button_operator = True
         return
-    if first_time is True:
+    if first_time:
+        if register == "":
+            return
         accumulator = register
         register = ""
         update_output(accumulator)
@@ -138,7 +144,9 @@ def press_divide():
         current_func = "divide"
         last_button_operator = True
         return
-    if first_time is True:
+    if first_time:
+        if register == "":
+            return
         accumulator = register
         register = ""
         update_output(accumulator)
@@ -171,7 +179,9 @@ def press_power():
         current_func = "power"
         last_button_operator = True
         return
-    if first_time is True:
+    if first_time:
+        if register == "":
+            return
         accumulator = register
         register = ""
         update_output(accumulator)
@@ -192,6 +202,9 @@ def press_negate():
     global accumulator
     global first_time
     global accumulator_displayed
+    if first_time:
+        if register == "":
+            return
     if not accumulator_displayed:
         if register == "":
             return
@@ -391,7 +404,7 @@ def press_equals():
             accumulator = str(float(accumulator) ** float(register))
     check_is_int("accumulator")
     update_output(accumulator)
-    accumulator_displayed = True
+    accumulator_displayed = False
     last_button_operator = False
     last_button_equals = True
     return
