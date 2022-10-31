@@ -1,470 +1,365 @@
 from tkinter import *
 
 
-def check_is_int(type):
+def check_is_int(arg):
+    global accumulator
     global register
-    global y
-    if type == "y":
-        fcheck = float(y)
-        if fcheck.is_integer():
-            y = str(int(fcheck))
-    if type == "register":
+    if arg == "register":
         fcheck = float(register)
         if fcheck.is_integer():
             register = str(int(fcheck))
+    if arg == "accumulator":
+        fcheck = float(accumulator)
+        if fcheck.is_integer():
+            accumulator = str(int(fcheck))
 
 
 def update_output(output):
     input_widget.configure(text=output)
 
 
-def blank_register():
+def blank_accumulator():
     input_widget.configure(text="")
-
-
-def debug():
-    global register
-    global x
-    global y
-    global current_func
-    global first_time
-    print(
-        f"x: {x}, y: {y}, register: {register}, func: {current_func}, first: {first_time}, reg_disp: {register_displayed}")
 
 
 def press_plus():
     global last_button_operator
+    global accumulator
     global register
-    global x
-    global y
     global first_time
-    global register_displayed
+    global accumulator_displayed
     global current_func
     global last_button_equals
-    # debug()
-    # current_func = "plus"
     if last_button_operator:
         current_func = "plus"
         last_button_operator = True
         return
     if last_button_equals:
-        print("FOUND ME!")
-        # register = y
-        y = ""
-        debug()
+        register = ""
         current_func = "plus"
         last_button_operator = True
         return
     if first_time is True:
-        register = y
-        y = ""
-        update_output(register)
-        register_displayed = True
+        accumulator = register
+        register = ""
+        update_output(accumulator)
+        accumulator_displayed = True
         first_time = False
     else:
-        print("DEBUG THIS")
-        debug()
         press_equals()
-        # print(float(register) + float(y))
-        # debug()
-        # x = register
-        register_displayed = True
-        # first_time = True
-        # debug()
-        update_output(register)
-    # y = ""
-    # debug()
+        accumulator_displayed = True
+        update_output(accumulator)
     current_func = "plus"
-    # update_output()
     last_button_operator = True
     last_button_equals = False
-    # blank_register()
-    y = ""
+    register = ""
 
 
 def press_minus():
     global last_button_operator
+    global accumulator
     global register
-    global x
-    global y
     global first_time
-    global register_displayed
+    global accumulator_displayed
     global current_func
     global last_button_equals
-    # debug()
-    # current_func = "plus"
     if last_button_operator:
         current_func = "minus"
         last_button_operator = True
         return
     if last_button_equals:
-        print("FOUND ME!")
-        # register = y
-        y = ""
-        debug()
+        register = ""
         current_func = "minus"
         last_button_operator = True
         return
     if first_time is True:
-        register = y
-        y = ""
-        update_output(register)
-        register_displayed = True
+        accumulator = register
+        register = ""
+        update_output(accumulator)
+        accumulator_displayed = True
         first_time = False
     else:
-        print("DEBUG THIS")
-        debug()
         press_equals()
-        # print(float(register) + float(y))
-        # debug()
-        # x = register
-        register_displayed = True
-        # first_time = True
-        # debug()
-        update_output(register)
-    # y = ""
-    # debug()
+        accumulator_displayed = True
+        update_output(accumulator)
     current_func = "minus"
-    # update_output()
     last_button_operator = True
     last_button_equals = False
-    # blank_register()
-    y = ""
+    register = ""
 
 
 def press_times():
     global last_button_operator
+    global accumulator
     global register
-    global x
-    global y
     global first_time
-    global register_displayed
+    global accumulator_displayed
     global current_func
     global last_button_equals
-    # debug()
-    # current_func = "plus"
     if last_button_operator:
         current_func = "times"
         last_button_operator = True
         return
     if last_button_equals:
-        print("FOUND ME!")
-        # register = y
-        y = ""
-        debug()
+        register = ""
         current_func = "times"
         last_button_operator = True
         return
     if first_time is True:
-        register = y
-        y = ""
-        update_output(register)
-        register_displayed = True
+        accumulator = register
+        register = ""
+        update_output(accumulator)
+        accumulator_displayed = True
         first_time = False
     else:
-        print("DEBUG THIS")
-        debug()
         press_equals()
-        # print(float(register) + float(y))
-        # debug()
-        # x = register
-        register_displayed = True
-        # first_time = True
-        # debug()
-        update_output(register)
-    # y = ""
-    # debug()
+        accumulator_displayed = True
+        update_output(accumulator)
     current_func = "times"
-    # update_output()
     last_button_operator = True
     last_button_equals = False
-    # blank_register()
-    y = ""
+    register = ""
 
 
 def press_divide():
     global last_button_operator
+    global accumulator
     global register
-    global x
-    global y
     global first_time
-    global register_displayed
+    global accumulator_displayed
     global current_func
     global last_button_equals
-    # debug()
-    # current_func = "plus"
     if last_button_operator:
         current_func = "divide"
         last_button_operator = True
         return
     if last_button_equals:
-        print("FOUND ME!")
-        # register = y
-        y = ""
-        debug()
+        register = ""
         current_func = "divide"
         last_button_operator = True
         return
     if first_time is True:
-        register = y
-        y = ""
-        update_output(register)
-        register_displayed = True
+        accumulator = register
+        register = ""
+        update_output(accumulator)
+        accumulator_displayed = True
         first_time = False
     else:
-        print("DEBUG THIS")
-        debug()
         press_equals()
-        # print(float(register) + float(y))
-        # debug()
-        # x = register
-        register_displayed = True
-        # first_time = True
-        # debug()
-        update_output(register)
-    # y = ""
-    # debug()
+        accumulator_displayed = True
+        update_output(accumulator)
     current_func = "divide"
-    # update_output()
     last_button_operator = True
     last_button_equals = False
-    # blank_register()
-    y = ""
+    register = ""
 
 
 def press_power():
     global last_button_operator
+    global accumulator
     global register
-    global x
-    global y
     global first_time
-    global register_displayed
+    global accumulator_displayed
     global current_func
     global last_button_equals
-    # debug()
-    # current_func = "plus"
     if last_button_operator:
         current_func = "power"
         last_button_operator = True
         return
     if last_button_equals:
-        print("FOUND ME!")
-        # register = y
-        y = ""
-        debug()
+        register = ""
         current_func = "power"
         last_button_operator = True
         return
     if first_time is True:
-        register = y
-        y = ""
-        update_output(register)
-        register_displayed = True
+        accumulator = register
+        register = ""
+        update_output(accumulator)
+        accumulator_displayed = True
         first_time = False
     else:
-        print("DEBUG THIS")
-        debug()
         press_equals()
-        # print(float(register) + float(y))
-        # debug()
-        # x = register
-        register_displayed = True
-        # first_time = True
-        # debug()
-        update_output(register)
-    # y = ""
-    # debug()
+        accumulator_displayed = True
+        update_output(accumulator)
     current_func = "power"
-    # update_output()
     last_button_operator = True
     last_button_equals = False
-    # blank_register()
-    y = ""
+    register = ""
 
 
 def press_negate():
-    global y
-    global x
     global register
+    global accumulator
     global first_time
-    global register_displayed
-    if not register_displayed:
-        if y == "":
+    global accumulator_displayed
+    if not accumulator_displayed:
+        if register == "":
             return
-        elif float(y) == 0:
+        elif float(register) == 0:
             return
-        elif float(y) > 0:
-            y = "-" + y
-            # register = y
-        elif float(y) < 0:
-            y = y.lstrip("-")
-            # register = y
-        check_is_int("y")
-        update_output(y)
-        debug()
-        return
-    elif register_displayed:
-        if float(register) > 0:
+        elif float(register) > 0:
             register = "-" + register
-            x = register
-            y = "0"
-            first_time = True
         elif float(register) < 0:
             register = register.lstrip("-")
-            x = register
-            y = "0"
-            first_time = True
         check_is_int("register")
         update_output(register)
-        debug()
+        return
+    elif accumulator_displayed:
+        if float(accumulator) > 0:
+            accumulator = "-" + accumulator
+            register = "0"
+            first_time = True
+        elif float(accumulator) < 0:
+            accumulator = accumulator.lstrip("-")
+            register = "0"
+            first_time = True
+        check_is_int("accumulator")
+        update_output(accumulator)
         return
 
 
 def press_one():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "1"
-    update_output(y)
+    accumulator_displayed = False
+    register += "1"
+    update_output(register)
 
 
 def press_two():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "2"
-    update_output(y)
+    accumulator_displayed = False
+    register += "2"
+    update_output(register)
 
 
 def press_three():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "3"
-    update_output(y)
+    accumulator_displayed = False
+    register += "3"
+    update_output(register)
 
 
 def press_four():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "4"
-    update_output(y)
+    accumulator_displayed = False
+    register += "4"
+    update_output(register)
 
 
 def press_five():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "5"
-    update_output(y)
+    accumulator_displayed = False
+    register += "5"
+    update_output(register)
 
 
 def press_six():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "6"
-    update_output(y)
+    accumulator_displayed = False
+    register += "6"
+    update_output(register)
 
 
 def press_seven():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "7"
-    update_output(y)
+    accumulator_displayed = False
+    register += "7"
+    update_output(register)
 
 
 def press_eight():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "8"
-    update_output(y)
+    accumulator_displayed = False
+    register += "8"
+    update_output(register)
 
 
 def press_nine():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "9"
-    update_output(y)
+    accumulator_displayed = False
+    register += "9"
+    update_output(register)
 
 
 def press_zero():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    y += "0"
-    update_output(y)
+    accumulator_displayed = False
+    register += "0"
+    update_output(register)
 
 
 def press_decimal():
-    global y
-    global register_displayed
+    global register
+    global accumulator_displayed
     global last_button_equals
     global last_button_operator
     last_button_operator = False
     last_button_equals = False
-    register_displayed = False
-    if "." not in y:
-        y += "."
-        # check_is_int("y")
-        update_output(y)
+    accumulator_displayed = False
+    if "." not in register:
+        register += "."
+        update_output(register)
 
 
 def press_clear():
-    global x
-    global y
     global register
+    global accumulator
     global first_time
     global last_button_operator
     global last_button_equals
     global current_func
-    x = "0"
-    y = ""
-    register = "0"
+    register = ""
+    accumulator = "0"
     current_func = ""
     last_button_operator = False
     last_button_equals = False
@@ -473,53 +368,41 @@ def press_clear():
 
 
 def press_equals():
-    global register
-    global register_displayed
+    global accumulator
+    global accumulator_displayed
     global last_button_equals
-    global y
+    global register
     global current_func
     global last_button_operator
     if last_button_operator is True:
-        y = register
-        print("last button was operator before equals")
-        debug()
+        register = accumulator
     match current_func:
         case "":
             return
         case "plus":
-            print("adding")
-            debug()
-            register = str(float(register) + float(y))
+            accumulator = str(float(accumulator) + float(register))
         case "minus":
-            print('subtracting')
-            # debug()
-            register = str(float(register) - float(y))
+            accumulator = str(float(accumulator) - float(register))
         case "times":
-            register = str(float(register) * float(y))
+            accumulator = str(float(accumulator) * float(register))
         case "divide":
-            register = str(float(register) / float(y))
+            accumulator = str(float(accumulator) / float(register))
         case "power":
-            register = str(float(register) ** float(y))
-    # debug()
-    # y = ""
-    check_is_int("register")
-    debug()
-    update_output(register)
-    print(register)
-    # update_output(register)
-    register_displayed = True
+            accumulator = str(float(accumulator) ** float(register))
+    check_is_int("accumulator")
+    update_output(accumulator)
+    accumulator_displayed = True
     last_button_operator = False
     last_button_equals = True
     return
 
 
-register = "0"
-x = "0"
+accumulator = "0"
 first_time = True
-register_displayed = False
+accumulator_displayed = False
 last_button_operator = False
 last_button_equals = False
-y = ""
+register = ""
 current_func = ""
 result = ""
 
@@ -579,14 +462,26 @@ zero_button.grid(row=5, column=0)
 decimal_button.grid(row=5, column=1)
 equals_button.grid(row=5, column=2, columnspan=2, sticky=W + E)
 
-# Bind return to run the app and shift+return to the Random! button
-# win.bind('<Return>', lambda e: calculator())
-
-# def main():
-#     win.mainloop()
-#     register = ""
-
+# Bind keys
+win.bind("<Return>", lambda e: press_equals())
+win.bind("1", lambda e: press_one())
+win.bind("2", lambda e: press_two())
+win.bind("3", lambda e: press_three())
+win.bind("4", lambda e: press_four())
+win.bind("5", lambda e: press_five())
+win.bind("6", lambda e: press_six())
+win.bind("7", lambda e: press_seven())
+win.bind("8", lambda e: press_eight())
+win.bind("9", lambda e: press_nine())
+win.bind("0", lambda e: press_zero())
+win.bind(".", lambda e: press_decimal())
+win.bind("+", lambda e: press_plus())
+win.bind("-", lambda e: press_minus())
+win.bind("*", lambda e: press_times())
+win.bind("/", lambda e: press_divide())
+win.bind("^", lambda e: press_power())
+win.bind("<Escape>", lambda e: press_clear())
 
 if __name__ == "__main__":
-    register = ""
+    accumulator = ""
     win.mainloop()
