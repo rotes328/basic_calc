@@ -202,9 +202,6 @@ def press_negate():
     global accumulator
     global first_time
     global accumulator_displayed
-    if first_time:
-        if register == "":
-            return
     if not accumulator_displayed:
         if register == "":
             return
@@ -220,12 +217,10 @@ def press_negate():
     elif accumulator_displayed:
         if float(accumulator) > 0:
             accumulator = "-" + accumulator
-            register = "0"
-            first_time = True
+            register = ""
         elif float(accumulator) < 0:
             accumulator = accumulator.lstrip("-")
-            register = "0"
-            first_time = True
+            register = ""
         check_is_int("accumulator")
         update_output(accumulator)
         return
@@ -376,6 +371,7 @@ def press_clear():
     current_func = ""
     last_button_operator = False
     last_button_equals = False
+    accumulator_displayed = False
     first_time = True
     update_output("")
 
@@ -404,7 +400,7 @@ def press_equals():
             accumulator = str(float(accumulator) ** float(register))
     check_is_int("accumulator")
     update_output(accumulator)
-    accumulator_displayed = False
+    accumulator_displayed = True
     last_button_operator = False
     last_button_equals = True
     return
