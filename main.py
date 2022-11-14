@@ -50,7 +50,7 @@ def press_plus():
     else:
         press_equals()
         accumulator_displayed = True
-        update_output(accumulator)
+        # update_output(accumulator)
     current_func = "plus"
     last_button_operator = True
     last_button_equals = False
@@ -85,7 +85,7 @@ def press_minus():
     else:
         press_equals()
         accumulator_displayed = True
-        update_output(accumulator)
+        # update_output(accumulator)
     current_func = "minus"
     last_button_operator = True
     last_button_equals = False
@@ -120,7 +120,7 @@ def press_times():
     else:
         press_equals()
         accumulator_displayed = True
-        update_output(accumulator)
+        # update_output(accumulator)
     current_func = "times"
     last_button_operator = True
     last_button_equals = False
@@ -155,7 +155,7 @@ def press_divide():
     else:
         press_equals()
         accumulator_displayed = True
-        update_output(accumulator)
+        # update_output(accumulator)
     current_func = "divide"
     last_button_operator = True
     last_button_equals = False
@@ -190,7 +190,7 @@ def press_power():
     else:
         press_equals()
         accumulator_displayed = True
-        update_output(accumulator)
+        # update_output(accumulator)
     current_func = "power"
     last_button_operator = True
     last_button_equals = False
@@ -322,6 +322,24 @@ def press_eight():
     update_output(register)
 
 
+def zero_error():
+    global register
+    global accumulator_displayed
+    global last_button_equals
+    global last_button_operator
+    global accumulator
+    global first_time
+    global current_func
+    register = "0"
+    accumulator = "0"
+    current_func = ""
+    last_button_operator = False
+    last_button_equals = False
+    accumulator_displayed = False
+    first_time = True
+    input_widget.configure(text="Error")
+
+
 def press_nine():
     global register
     global accumulator_displayed
@@ -366,6 +384,7 @@ def press_clear():
     global last_button_operator
     global last_button_equals
     global current_func
+    global accumulator_displayed
     register = ""
     accumulator = "0"
     current_func = ""
@@ -385,19 +404,23 @@ def press_equals():
     global last_button_operator
     if last_button_operator is True:
         register = accumulator
-    match current_func:
-        case "":
-            return
-        case "plus":
-            accumulator = str(float(accumulator) + float(register))
-        case "minus":
-            accumulator = str(float(accumulator) - float(register))
-        case "times":
-            accumulator = str(float(accumulator) * float(register))
-        case "divide":
-            accumulator = str(float(accumulator) / float(register))
-        case "power":
-            accumulator = str(float(accumulator) ** float(register))
+    try:
+        match current_func:
+            case "":
+                return
+            case "plus":
+                accumulator = str(float(accumulator) + float(register))
+            case "minus":
+                accumulator = str(float(accumulator) - float(register))
+            case "times":
+                accumulator = str(float(accumulator) * float(register))
+            case "divide":
+                accumulator = str(float(accumulator) / float(register))
+            case "power":
+                accumulator = str(float(accumulator) ** float(register))
+    except ZeroDivisionError:
+        zero_error()
+        return
     check_is_int("accumulator")
     update_output(accumulator)
     accumulator_displayed = True
